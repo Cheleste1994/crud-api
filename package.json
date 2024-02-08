@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "start:dev": "tsnd --respawn src/server.ts",
-    "start:prod": "webpack",
+    "start:prod": "webpack && node dist/bundle.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "jest --silent",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.16",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "dotenv": "^16.4.1",
