@@ -1,11 +1,10 @@
+import { User, users } from '../../data/users';
 import http from 'http';
-import { User } from 'server';
 import { v4 as uuidv4 } from 'uuid';
 
 export function handleCreateUser(
   req: http.IncomingMessage,
-  res: http.ServerResponse,
-  users: User[]
+  res: http.ServerResponse
 ) {
   let body = '';
   req.on('data', (chunk) => {

@@ -1,5 +1,4 @@
 import http from 'http';
-import { User } from 'server';
 import { handleDeleteUser } from './DELETE/handleDeleteUser';
 import { handleGetUser } from './GET/handleGetUser';
 import { handleGetUsers } from './GET/handleGetUsers';
@@ -13,38 +12,37 @@ function handleNotFound(res: http.ServerResponse) {
 
 export function handleRoutes(
   req: http.IncomingMessage,
-  res: http.ServerResponse,
-  users: User[]
+  res: http.ServerResponse
 ) {
   switch (req.method) {
     case 'GET':
       if (req.url === '/api/users') {
-        handleGetUsers(res, users);
+        handleGetUsers(res);
         return;
       }
       if (req.url?.startsWith('/api/users/')) {
-        handleGetUser(req, res, users);
+        handleGetUser(req, res);
         return;
       }
       handleNotFound(res);
       break;
     case 'POST':
       if (req.url === '/api/users') {
-        handleCreateUser(req, res, users);
+        handleCreateUser(req, res);
         return;
       }
       handleNotFound(res);
       break;
     case 'PUT':
       if (req.url?.startsWith('/api/users/')) {
-        handleUpdateUser(req, res, users);
+        handleUpdateUser(req, res);
         return;
       }
       handleNotFound(res);
       break;
     case 'DELETE':
       if (req.url?.startsWith('/api/users/')) {
-        handleDeleteUser(req, res, users);
+        handleDeleteUser(req, res);
         return;
       }
       handleNotFound(res);

@@ -10,7 +10,7 @@
     "start:prod": "webpack && node dist/bundle.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "test": "jest --silent",
+    "test": "jest",
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {

@@ -1,10 +1,9 @@
+import { User, users } from '../../data/users';
 import http from 'http';
-import { User } from 'server';
 
 export function handleUpdateUser(
   req: http.IncomingMessage,
-  res: http.ServerResponse,
-  users: User[]
+  res: http.ServerResponse
 ) {
   const userId = req.url?.split('/').pop();
   if (!userId) {
