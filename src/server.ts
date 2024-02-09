@@ -1,3 +1,4 @@
+import { users } from './data/users';
 import 'dotenv/config';
 import http from 'http';
 import { handleRoutes } from './routes/routes';
@@ -5,10 +6,14 @@ import { handleRoutes } from './routes/routes';
 const PORT = process.env.PORT || '4000';
 
 const server = http.createServer((req, res) => {
-  console.log('Url:', req.url);
-  console.log('Type request:', req.method);
-
-  handleRoutes(req, res);
+  const description = [
+    {
+      'Url:': req.url,
+      'Type request:': req.method,
+    },
+  ];
+  console.table(description);
+  handleRoutes(req, res, users);
 });
 
 server.listen(PORT, () => {

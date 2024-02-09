@@ -1,9 +1,10 @@
-import { users } from '../../data/users';
+import { User } from '../../data/users';
 import http from 'http';
 
 export function handleGetUser(
   req: http.IncomingMessage,
-  res: http.ServerResponse
+  res: http.ServerResponse,
+  users: User[],
 ) {
   const userId = req.url?.split('/').pop();
   if (!userId) {

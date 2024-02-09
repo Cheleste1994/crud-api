@@ -15,7 +15,7 @@ describe('handleGetUser', () => {
       },
     } as unknown as ServerResponse;
 
-    handleGetUser(reqMock, resMock);
+    handleGetUser(reqMock, resMock, users);
 
     expect(result).toBe('{"message":"Invalid userId"}');
   });
@@ -32,7 +32,7 @@ describe('handleGetUser', () => {
       },
     } as unknown as ServerResponse;
 
-    handleGetUser(reqMock, resMock);
+    handleGetUser(reqMock, resMock, users);
 
     expect(result).toBe("{\"message\":\"User not found\"}");
   });
@@ -50,7 +50,7 @@ describe('handleGetUser', () => {
       setHeader: jest.fn(),
     } as unknown as ServerResponse;
 
-    handleGetUser(reqMock, resMock);
+    handleGetUser(reqMock, resMock, users);
 
     expect(JSON.parse(result || '')).toStrictEqual(users[0]);
   });

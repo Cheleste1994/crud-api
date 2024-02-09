@@ -1,9 +1,10 @@
-import { User, users } from '../../data/users';
+import { User } from '../../data/users';
 import http from 'http';
 
 export function handleUpdateUser(
   req: http.IncomingMessage,
-  res: http.ServerResponse
+  res: http.ServerResponse,
+  users: User[],
 ) {
   const userId = req.url?.split('/').pop();
   if (!userId) {
@@ -20,12 +21,15 @@ export function handleUpdateUser(
   }
 
   let body = '';
+
   req.on('data', (chunk) => {
     body += chunk.toString();
   });
+
   req.on('end', () => {
     try {
-      const userData = JSON.parse(body) as User;
+      const userData = JSON.parse(body);
+
       if (
         !userData.username ||
         !userData.age ||

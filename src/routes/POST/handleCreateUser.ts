@@ -1,10 +1,11 @@
-import { User, users } from '../../data/users';
+import { User } from '../../data/users';
 import http from 'http';
 import { v4 as uuidv4 } from 'uuid';
 
 export function handleCreateUser(
   req: http.IncomingMessage,
-  res: http.ServerResponse
+  res: http.ServerResponse,
+  users: User[],
 ) {
   let body = '';
   req.on('data', (chunk) => {
@@ -31,6 +32,7 @@ export function handleCreateUser(
         hobbies: userData.hobbies,
       };
       users.push(newUser);
+
       res.statusCode = 201;
       res.setHeader('Content-Type', 'application/json');
       res.end(JSON.stringify(newUser));

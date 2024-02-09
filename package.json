@@ -8,6 +8,7 @@
   "scripts": {
     "start:dev": "tsnd --respawn src/server.ts",
     "start:prod": "webpack && node dist/bundle.js",
+    "start:multi": "tsnd src/loadBalancer.ts",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "jest",

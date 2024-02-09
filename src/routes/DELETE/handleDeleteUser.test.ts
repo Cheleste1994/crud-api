@@ -15,7 +15,7 @@ describe('handleDeleteUser', () => {
       },
     } as unknown as ServerResponse;
 
-    handleDeleteUser(reqMock, resMock);
+    handleDeleteUser(reqMock, resMock, users);
 
     expect(resMock.statusCode).toBe(400);
     expect(result).toBe('{"message":"Invalid userId"}');
@@ -33,7 +33,7 @@ describe('handleDeleteUser', () => {
       },
     } as unknown as ServerResponse;
 
-    handleDeleteUser(reqMock, resMock);
+    handleDeleteUser(reqMock, resMock, users);
 
     expect(resMock.statusCode).toBe(404);
     expect(result).toBe("{\"message\":\"User not found\"}");
@@ -50,7 +50,7 @@ describe('handleDeleteUser', () => {
 
     expect(users.map((us) => us.id).includes('1')).toBe(true);
 
-    handleDeleteUser(reqMock, resMock);
+    handleDeleteUser(reqMock, resMock, users);
 
     expect(resMock.statusCode).toBe(204);
     expect(users.map((us) => us.id).includes('1')).toBe(false);

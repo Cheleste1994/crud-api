@@ -14,7 +14,7 @@ describe('handleGetUsers', () => {
       setHeader: jest.fn(),
     } as unknown as ServerResponse;
 
-    handleGetUsers(resMock);
+    handleGetUsers(resMock, users);
 
     expect(JSON.parse(result || '')).toStrictEqual(users);
   });

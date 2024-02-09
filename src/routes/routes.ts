@@ -1,3 +1,4 @@
+import { User } from '../data/users';
 import http from 'http';
 import { handleDeleteUser } from './DELETE/handleDeleteUser';
 import { handleGetUser } from './GET/handleGetUser';
@@ -12,37 +13,38 @@ function handleNotFound(res: http.ServerResponse) {
 
 export function handleRoutes(
   req: http.IncomingMessage,
-  res: http.ServerResponse
+  res: http.ServerResponse,
+  users: User[],
 ) {
   switch (req.method) {
     case 'GET':
       if (req.url === '/api/users') {
-        handleGetUsers(res);
+        handleGetUsers(res, users);
         return;
       }
       if (req.url?.startsWith('/api/users/')) {
-        handleGetUser(req, res);
+        handleGetUser(req, res, users);
         return;
       }
       handleNotFound(res);
       break;
     case 'POST':
       if (req.url === '/api/users') {
-        handleCreateUser(req, res);
+        handleCreateUser(req, res, users);
         return;
       }
       handleNotFound(res);
       break;
     case 'PUT':
       if (req.url?.startsWith('/api/users/')) {
-        handleUpdateUser(req, res);
+        handleUpdateUser(req, res, users);
         return;
       }
       handleNotFound(res);
       break;
     case 'DELETE':
       if (req.url?.startsWith('/api/users/')) {
-        handleDeleteUser(req, res);
+        handleDeleteUser(req, res, users);
         return;
       }
       handleNotFound(res);
