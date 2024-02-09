@@ -36,7 +36,7 @@ describe('handleDeleteUser', () => {
     handleDeleteUser(reqMock, resMock, users);
 
     expect(resMock.statusCode).toBe(404);
-    expect(result).toBe("{\"message\":\"User not found\"}");
+    expect(result).toBe('{"message":"User not found"}');
   });
 
   test('should, if id is correct, delete user', () => {

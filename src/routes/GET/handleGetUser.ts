@@ -4,7 +4,7 @@ import http from 'http';
 export function handleGetUser(
   req: http.IncomingMessage,
   res: http.ServerResponse,
-  users: User[],
+  users: User[]
 ) {
   const userId = req.url?.split('/').pop();
   if (!userId) {

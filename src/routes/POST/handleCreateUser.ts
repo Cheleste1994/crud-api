@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 export function handleCreateUser(
   req: http.IncomingMessage,
   res: http.ServerResponse,
-  users: User[],
+  users: User[]
 ) {
   let body = '';
   req.on('data', (chunk) => {

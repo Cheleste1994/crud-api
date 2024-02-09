@@ -34,7 +34,7 @@ describe('handleGetUser', () => {
 
     handleGetUser(reqMock, resMock, users);
 
-    expect(result).toBe("{\"message\":\"User not found\"}");
+    expect(result).toBe('{"message":"User not found"}');
   });
 
   test('should, if id is correct, return user', () => {

@@ -14,7 +14,7 @@ function handleNotFound(res: http.ServerResponse) {
 export function handleRoutes(
   req: http.IncomingMessage,
   res: http.ServerResponse,
-  users: User[],
+  users: User[]
 ) {
   switch (req.method) {
     case 'GET':
